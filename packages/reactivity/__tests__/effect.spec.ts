@@ -83,6 +83,8 @@ describe("effect", () => {
     obj.foo++;
     expect(scheduler).toHaveBeenCalledTimes(1);
     // // should not run yet
+    //当有scheduler时 effect监听不执行run  只执行scheduler 而其左右是将run拿出来 当我需要的时候才执行
+    //相当于有个开关判断 如果有scheduler时就不自动执行run了 让你手动去执行 但是我会通过scheduler通知你
     expect(dummy).toBe(1);
     // // manually run
     run();

@@ -151,6 +151,7 @@ export function trigger(target, type, key) {
   });
   // 这里的目的是只有一个 dep ，这个dep 里面包含所有的 effect
   // 这里的目前应该是为了 triggerEffects 这个函数的复用
+  // createDep将 一个函数中 多次调用依赖的get 导致重复收集的副作用解除
   triggerEffects(createDep(effects));
 }
 
